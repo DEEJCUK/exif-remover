@@ -24,8 +24,10 @@ Deploys:
 Uploads to bucket A trigger a Lambda that removes EXIF metadata and saves the cleaned image to bucket B, preserving the path.
 
 ## Improvements
+- this is a POC, if considering deployment, Setup a shared backend (s3) for tf state and split the envs using best practices (Dev,Test,Prod) and paramiterise them
+- Follow Terraform best practices by creating reusable modules rather than a flat repo
 - Use IAM roles for access control instead of IAM users for better security and scalability
 - Add error handling and logging to the Lambda function
-- Parameterize bucket names and Lambda settings for flexibility
-- add Random suffixes to bucket names 
-- Add automated tests for the workflow
+- Parameterize bucket names and Lambda settings for flexibility and add Random suffixes
+- Add automated tests for the workflow and terraform functions
+- If running something like this in a production environment, Add checks in your CI/CD workflow to keep the code readable, secure and following industry standards (trivy, tflint, tf fmt, infracost, SAST, DAST etc)
